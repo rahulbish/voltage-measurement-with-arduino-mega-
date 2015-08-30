@@ -1,0 +1,16 @@
+float vPow = 4.36; /* voltage measure at vcc and gnd*/
+ float r1 = 97500;  /*100k eq*/
+ float r2 = 9780;   /*10k eq*/
+ float Vmax ;
+ void setup() {
+   Serial.begin(9600);
+   delay(2000);
+ }
+
+ void loop() {
+   float V = (analogRead(5) * Vmax) / 1024.0; // analogRead(5) read analog pin A5
+   float Vfinal = V/ (r2 / (r1 + r2));
+   Serial.print("voltage=");
+   Serial.println(Vfinal);
+   delay(100);
+ }
